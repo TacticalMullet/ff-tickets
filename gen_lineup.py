@@ -28,7 +28,7 @@ if __name__ == '__main__':
     wr = args.wr
     te = args.te
 
-    lineups = [Lineup('QB', 'DST', 'K', 'RB', 'WR', 'TE')]
+    lineups = [Lineup('QB', 'DST', 'K', 'RB', 'WR', 'TE'), Lineup('--','---','-','--','--','--')]
 
     for a in qb:
         for b in dst:
@@ -38,6 +38,7 @@ if __name__ == '__main__':
                         for f in te:
                             lineups.append(Lineup(a,b,c,d,e,f))
 
+    lineups.append(Lineup('--','--','--','--','--','--'))
 
     qbl = '{{:^{}}}'.format(len(max(qb, key=len)))
     dstl = '{{:^{}}}'.format(len(max(dst, key=len)))
@@ -50,3 +51,7 @@ if __name__ == '__main__':
 
     for l in lineups:
         print(fmt.format(l.qb,l.dst,l.k,l.rb,l.wr,l.te))
+
+    cost = (len(lineups) - 3) * 5
+
+    print('| total cost: ${}'.format(cost))
